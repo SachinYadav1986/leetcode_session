@@ -1,25 +1,19 @@
 class Solution {
 public:
     double myPow(double x, int n) {
-        
-        double ans=1.0;
+        double res=1.0;
         long long m=n;
-        
-        long long exp=llabs(n);
-        while(exp>0){
-            if(exp%2==1){
-                ans=ans*x;
-                exp=exp-1;
-            }
-            else{
+        if(m<0) m=-1.0*n;
+        while(m!=0){
+            if(m%2==0){
                 x=x*x;
-                exp=exp/2;
+                m=m/2;
+            }else{
+                res=res*x;
+                m--;
             }
         }
-        
-        if(m<0){
-            ans=1.0/ans;
-        }
-    return ans;
+        if(n<0) res=1.0/res;
+        return res;
     }
 };
